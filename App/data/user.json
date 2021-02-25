@@ -1,0 +1,16 @@
+{
+    "users": [
+        {
+            "name": "Molecule Man",
+            "score": 7
+        },
+        {
+            "name": "Madame Uppercut",
+            "score": 3
+        },
+        {
+            "name": "Eternal Flame",
+            "score": 5
+        }
+    ]
+}

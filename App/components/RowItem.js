@@ -22,3 +22,10 @@ export const RowItem = ({ onPress = () => {}, name, color }) => (
     </View>
   </TouchableOpacity>
 );
+
+
+export const RowUser = () => (
+  <View style={[styles.row, { backgroundColor: color }]}>
+    <Text style={styles.text}>{name}</Text>
+  </View>
+);

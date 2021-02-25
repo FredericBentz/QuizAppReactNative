@@ -1,14 +1,13 @@
-import SQLite from 'react-native-sqlite-storage';
+import * as SQLite from 'expo-sqlite'
 
 
 const SelectAllUser = () => {
-    const db = SQLite.openDatabase("quiz.db");
+    const db = SQLite.openDatabase("quiz.sqlite");
+    const test = "tata"
     db.transaction(tx => {
-        console.log('Résultat');
         tx.executeSql("SELECT * FROM user", [], (tx, results) => {
-            return results.rows.length
-
         });
+        return test
     });
 }
 

@@ -4,7 +4,6 @@ import QuizIndex from "./screens/QuizIndex";
 import Quiz from "./screens/Quiz";
 import Result from "./screens/Result";
 
-
 const MainStack = createStackNavigator({
   QuizIndex: {
     screen: QuizIndex,
@@ -15,6 +14,7 @@ const MainStack = createStackNavigator({
   Quiz: {
     screen: Quiz,
     navigationOptions: ({ navigation }) => ({
+      userName: navigation.getParam("userName"),
       headerTitle: navigation.getParam("title"),
       headerTintColor: "#fff",
       headerStyle: {
@@ -26,6 +26,8 @@ const MainStack = createStackNavigator({
   Result: {
     screen: Result,
     navigationOptions: ({ navigation }) => ({
+      userName: navigation.getParam("userName"),
+      userScore: navigation.getParam("userScore"),
       headerTitle: navigation.getParam("title"),
       headerTintColor: "#fff",
       headerStyle: {

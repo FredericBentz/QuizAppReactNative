@@ -1,30 +1,36 @@
 import React from "react";
-import { ScrollView, StatusBar, Image, Button, Text, TextInput, View } from "react-native";
-import SQLite from 'react-native-sqlite-storage';
+import { StatusBar,TouchableOpacity, Image, Text, TextInput, View, StyleSheet} from "react-native";
 import questionQuestions from "../data/question";
+import userJson from "../data/user.json";
 
-
-import { RowItem } from "../components/RowItem";
-
+const styles = StyleSheet.create({
+    row: {
+        paddingHorizontal: 15,
+        paddingVertical: 20,
+        backgroundColor: "#36B1F0",
+        marginBottom: 1
+    },
+    text: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "600"
+    }
+});
 
 class QuizIndex extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             userName: '',
-        };
+            userScore: 0
+        }
     }
 
-
-
-
     render() {
-        // const db = SQLite.openDatabase("quiz.db");
-        //
-        // db.transaction(tx => {
-        // // tx.executeSql(`INSERT INTO user (name, score) values (${  this.state.userName  }, 0);`);
-        //     tx.executeSql("INSERT INTO user (name, score) values (?, ?)", [this.state.userName, 0]);
-        // });
+        const state = this.state;
+        // this.setState({username: 'myValue'}, () => {
+        //     userJson.users[state.userName] = state.userScore
+        // }));  TODO ne fonctionne pas !!! et je n'arrive pas à le placé dans le OnPress...
 
         return  (
           <View
@@ -37,21 +43,28 @@ class QuizIndex extends React.Component {
             <View>
               <Text>Prénom: </Text>
               <TextInput
-                        placeholder='mon prénom'
+                label="test"
+
+                value={this.state.userName}
+                placeholder='mon prénom'
+                onChangeText={text => this.setState({userName: text })}
               />
             </View>
 
-            <RowItem
-                    name="Valider"
-                    color="#36b1f0"
-                    onPress={() =>
-                        this.props.navigation.navigate("Quiz", {
-                            title: "Question",
-                            questions: questionQuestions,
-                            color: "#36b1f0"
-                        })
-                    }
-            />
+            <TouchableOpacity
+              onPress={() =>
+                    this.props.navigation.navigate("Quiz", {
+                        title: "Question",
+                        questions: questionQuestions,
+                        color: "#36b1f0",
+                        userName:this.state.userName
+                    })}
+              activeOpacity={0.8}
+            >
+              <View style={[styles.row, { backgroundColor: "#36b1f0" }]}>
+                <Text style={styles.text}>Jouer</Text>
+              </View>
+            </TouchableOpacity>
           </View>
         );
     }
@@ -59,31 +72,3 @@ class QuizIndex extends React.Component {
 
 export default QuizIndex;
 
-
-
-
-
-
-// export default ({ navigation }) => (
-//   <ScrollView>
-//     <StatusBar barStyle="dark-content" />
-//     <View>
-//       <Text>Prénom: </Text>
-//       <TextInput
-//         placeholder='mon prénom'
-//       />
-//     </View>
-//
-//     <RowItem
-//       name="Valider"
-//       color="#36b1f0"
-//       onPress={() =>
-//         navigation.navigate("Quiz", {
-//           title: "Question",
-//           questions: questionQuestions,
-//           color: "#36b1f0"
-//         })
-//       }
-//     />
-//   </ScrollView>
-// );
