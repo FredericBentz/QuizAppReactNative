@@ -1,4 +1,4 @@
-## React Native Quiz App
+## React Native Quiz App (version Alpha 0.5)
 
 A simple cross platform (iOS and Android) React Native quiz app. This was put together for a training course.
 
