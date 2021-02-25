@@ -2,9 +2,6 @@
 
 A simple cross platform (iOS and Android) React Native quiz app. This was put together for a training course.
 
-![Index Screen](./assets/index.png)
-![Quiz Screen](./assets/quiz.png)
-
 ### Installation
 
 - `https://github.com/FredericBentz/QuizAppReactNative.git`
